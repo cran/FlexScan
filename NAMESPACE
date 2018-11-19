@@ -1,0 +1,7 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("sp", "polygons","plot")
+importFrom("smerc", "flex.test")
+importFrom("graphics", "legend", "par")
+importFrom("methods", "as", "slot")
+importFrom("spdep", "nb2listw", "poly2nb")
+
