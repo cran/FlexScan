@@ -15,22 +15,26 @@ flexscan=function(map,case,pop,nsim=999,k=10,alpha=0.05,isplot=TRUE,col=c("red",
   rst=matrix(rep(NA,length(fit$clusters)*8),ncol=8)
   dimnames(rst)=list(1:length(fit$clusters),c("Cluster Type","Region ID","Observed Cases","Expected Cases","SR","RR","LLR","P Value"))
   rst[,1]=c("Most Likely Cluster",rep("Secondary Cluster",length(fit$clusters)-1))
-  rst[,2]=unlist(lapply(sapply(fit$clusters,"[",1),function(x) paste(x,collapse=", ")))
-  rst[,3]=unlist(sapply(fit$clusters,"[",3))
-  rst[,4]=sprintf("%.3f",unlist(sapply(fit$clusters,"[",4)))
-  rst[,5]=sprintf("%.3f",unlist(sapply(fit$clusters,"[",5)))
-  rst[,6]=sprintf("%.3f",unlist(sapply(fit$clusters,"[",6)))
-  rst[,7]=sprintf("%.3f",unlist(sapply(fit$clusters,"[",7)))
-  rst[,8]=sprintf("%.3f",unlist(sapply(fit$clusters,"[",8)))
+  rst[,2]=unlist(lapply(sapply(fit$clusters,"[","locids"),function(x) paste(x,collapse=", ")))
+  rst[,3]=unlist(sapply(fit$clusters,"[","cases"))
+  rst[,4]=sprintf("%.3f",unlist(sapply(fit$clusters,"[","expected")))
+  rst[,5]=sprintf("%.3f",unlist(sapply(fit$clusters,"[","smr")))
+  rst[,6]=sprintf("%.3f",unlist(sapply(fit$clusters,"[","rr")))
+  rst[,7]=sprintf("%.3f",unlist(sapply(fit$clusters,"[","loglikrat")))
+  rst[,8]=sprintf("%.3f",unlist(sapply(fit$clusters,"[","pvalue")))
 
   if(isplot){
     par(mai=c(0.2,0.2,0.2,0.2))
     plot(map)
-    plot(map[sapply(fit$clusters,"[",1)[[1]],],add=TRUE,col=col[1])
-    for(i in 2:length(fit$clusters)){
-      plot(map[sapply(fit$clusters,"[",1)[[i]],],add=TRUE,col=col[2])
+    plot(map[sapply(fit$clusters,"[","locids")[[1]],],add=TRUE,col=col[1])
+    if(length(fit$clusters)>=2){
+      for(i in 2:length(fit$clusters)){
+        plot(map[sapply(fit$clusters,"[","locids")[[i]],],add=TRUE,col=col[2])
     }
-    legend("bottomright",legend=c("Most likely cluster","Secondary cluster"),pch=15,col=c("red","blue"),bty="n")
+    legend("bottomright",legend=c("Most likely cluster","Secondary cluster"),pch=15,col=col,bty="n")
+    }else{
+      legend("bottomright",legend=c("Most likely cluster"),pch=15,col=col[1],bty="n")
+    }
   }
 
   return(rst)

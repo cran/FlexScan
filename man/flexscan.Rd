@@ -40,7 +40,7 @@ Tango, T. & Takahashi, K. A Flexibly Shaped Spatial Scan Statistic for Detecting
 
 Updates:
 
-Updates is coming.
+Version 0.2.0: Fix the bugs according to the dependent package of "smerc" version 1.1
 
 }
 \examples{

@@ -1,8 +1,8 @@
-f1d1f31db88a2c8aa57ab76a64a717e7 *DESCRIPTION
+a2a5db796cce6be30a5905dc996756d8 *DESCRIPTION
 8a46612a23f1fa20f9ac0a0b947efba6 *NAMESPACE
-3af49c51214c7b2873294eb15b16df16 *R/flexscan.R
+7bc7ad60a744a18087eed11a9cb70546 *R/flexscan.R
 01a8f0b93e0172df24ca338c62118858 *data/map.RData
 f30cb594e457b29aa45ebc089eccf00d *data/sample.RData
-d3182f6dee58dc83e172829075ee3990 *man/flexscan.Rd
+d7f4898946871fbf751b95230af6ee2c *man/flexscan.Rd
 6dfff085eafcac60fe0069d2a32863c0 *man/map.Rd
 7232f235028c6e3b2ae4e33ddf7d5c49 *man/sample.Rd
